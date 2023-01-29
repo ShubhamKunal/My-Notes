@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>176496834606-v8h8j98rr139ii8e140c7m1pqsei7gis.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.176496834606-v8h8j98rr139ii8e140c7m1pqsei7gis</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB5OOEBo_xg3nttCDB6NhfIyToE6iuDrfw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>176496834606</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hello.mynotes</string>
+	<key>PROJECT_ID</key>
+	<string>mynotes-kunal</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mynotes-kunal.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:176496834606:ios:dfe6843ac2ec322be887bf</string>
+</dict>
+</plist>

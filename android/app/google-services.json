@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "176496834606",
+    "project_id": "mynotes-kunal",
+    "storage_bucket": "mynotes-kunal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176496834606:android:9b714e2729690b87e887bf",
+        "android_client_info": {
+          "package_name": "com.hello.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176496834606-20d5futjspfutb1pnrehhodhraiuouvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-AJVCl4ET22U6GP3gaciZl2Izb3x4hPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176496834606-20d5futjspfutb1pnrehhodhraiuouvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
