@@ -1,8 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../firebase_options.dart';
+import 'package:mynotes/constants/routes.dart';
 import 'dart:developer' as devtools;
+
+import 'package:mynotes/utilities/show_error_dialog.dart';
 
 class RegistrationView extends StatefulWidget {
   const RegistrationView({super.key});
@@ -59,27 +60,32 @@ class _RegistrationViewState extends State<RegistrationView> {
                   email: email,
                   password: password,
                 );
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/login',
-                  (route) => false,
-                );
+                final user = FirebaseAuth.instance.currentUser;
+                await user?.sendEmailVerification();
+                Navigator.of(context).pushNamed(verifyEmailRoute);
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'weak-password') {
                   devtools.log("Password is weak!");
+                  showErrorDialog(context, "Password is too weak!");
                 } else if (e.code == 'email-already-in-use') {
-                  devtools.log("Use another email man!");
+                  devtools.log("Use another email!");
+                  showErrorDialog(context, "Email is already in use!");
                 } else if (e.code == 'invalid-email') {
                   devtools.log("Invalid email entered!");
+                  showErrorDialog(context, "Invalid Email!");
                 } else {
                   devtools.log("Something wrong happened!");
+                  showErrorDialog(context, "Something went wrong!");
                 }
+              } catch (e) {
+                showErrorDialog(context, "Something went wrong!");
               }
             },
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                "/login",
+                loginRoute,
                 (route) => false,
               );
             },
