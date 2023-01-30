@@ -1,7 +1,5 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../firebase_options.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -36,57 +34,53 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         title: const Text("Login"),
       ),
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform,
-        ),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              // TODO: Handle this case.
-              return Column(
-                children: [
-                  TextField(
-                    decoration: const InputDecoration(hintText: "Email"),
-                    controller: _email,
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                  TextField(
-                    decoration: const InputDecoration(hintText: "Password"),
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    controller: _password,
-                    obscureText: true,
-                  ),
-                  TextButton(
-                    child: const Text("Login"),
-                    onPressed: () async {
-                      final email = _email.text;
-                      final password = _password.text;
-                      try {
-                        final userCredential = await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                          email: email,
-                          password: password,
-                        );
-                        print(userCredential);
-                      } on FirebaseAuthException catch (e) {
-                        if (e.code == 'user-not-found') {
-                          print("User not found!");
-                        } else if (e.code == 'wrong-password') {
-                          print('Wrong password');
-                        } else {
-                          print('Something wrong happened!');
-                        }
-                      }
-                    },
-                  ),
-                ],
+      body: Column(
+        children: [
+          TextField(
+            decoration: const InputDecoration(hintText: "Email"),
+            controller: _email,
+            keyboardType: TextInputType.emailAddress,
+          ),
+          TextField(
+            decoration: const InputDecoration(hintText: "Password"),
+            enableSuggestions: false,
+            autocorrect: false,
+            controller: _password,
+            obscureText: true,
+          ),
+          TextButton(
+            child: const Text("Login"),
+            onPressed: () async {
+              final email = _email.text;
+              final password = _password.text;
+              try {
+                final userCredential =
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                print(userCredential);
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'user-not-found') {
+                  print("User not found!");
+                } else if (e.code == 'wrong-password') {
+                  print('Wrong password');
+                } else {
+                  print('Something wrong happened!');
+                }
+              }
+            },
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                '/register',
+                (route) => false,
               );
-            default:
-              return const Center(child: Text("Loading...."));
-          }
-        },
+            },
+            child: const Text("Not registered yet? Click here!"),
+          )
+        ],
       ),
     );
   }
