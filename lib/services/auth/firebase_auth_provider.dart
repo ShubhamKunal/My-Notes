@@ -1,9 +1,12 @@
 // Here we abstract away firebase authentication to our provider
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:mynotes/services/auth/auth_provider.dart';
 import 'package:mynotes/services/auth/auth_user.dart';
 import 'package:mynotes/services/auth_exceptions.dart';
+
+import '../../firebase_options.dart';
 
 class FirebaseAuthProvider implements AuthProvider {
   @override
@@ -95,5 +98,13 @@ class FirebaseAuthProvider implements AuthProvider {
     } else {
       throw UserNotLoggedInException();
     }
+  }
+
+  @override
+  Future<void> initialize() async {
+    // TODO: implement initialize
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
   }
 }
